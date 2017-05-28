@@ -1,0 +1,46 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.3.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("io.spring.gradle:dependency-management-plugin:1.0.2.RELEASE")
+    }
+}
+plugins {
+    id 'org.springframework.boot' version '1.5.3.RELEASE'
+}
+
+
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'io.spring.dependency-management'
+
+jar {
+    baseName = 'demo'
+    version = '1.0-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework.social:spring-social-twitter")
+    compile ("org.springframework.boot:spring-boot-starter-web")
+    testCompile ("org.springframework.boot:spring-boot-starter-test")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.thymeleaf:thymeleaf-spring4")
+    compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
+    compile ("org.webjars:materializecss:0.98.2")
+    compile ("org.webjars:jquery:3.2.0")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.9'
+}
